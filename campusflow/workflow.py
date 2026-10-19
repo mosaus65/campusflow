@@ -1,11 +1,11 @@
 def assign_ticket(ticket, staff_name):
-    if not staff_name.strip():
-        raise ValueError("Staff name cannot be empty")
+    if not isinstance(staff_name, str) or not staff_name.strip():
+        raise ValueError("Staff name must be non-empty text")
 
     if ticket["status"] == "resolved":
         raise ValueError("Reopen the ticket before assigning it")
 
-    ticket["assigned_to"] = staff_name
+    ticket["assigned_to"] = staff_name.strip()
     return ticket
 
 
